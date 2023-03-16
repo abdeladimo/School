@@ -35,4 +35,9 @@ class User extends Model implements Authenticatable
     {
         return $this->hasOne(prof::class);
     }
+
+    public function student()
+    {
+        return $this->hasOne(student::class);
+    }
 }

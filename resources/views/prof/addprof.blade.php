@@ -3,7 +3,7 @@
     <div class="content-body">
         <!-- row -->
         <div class="container-fluid">
-                
+
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
@@ -18,7 +18,7 @@
                     </ol>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-xl-12 col-xxl-12 col-sm-12">
                     <div class="card">

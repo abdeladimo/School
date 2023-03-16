@@ -10,14 +10,14 @@
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4>All Professors</h4>
+                        <h4>All Students</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="{{route('allprof')}}">Professors</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Professors</a></li>
+                        <li class="breadcrumb-item active"><a href="{{route('allprof')}}">Students</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students</a></li>
                     </ol>
                 </div>
             </div>
@@ -34,8 +34,8 @@
                         <div id="list-view" class="tab-pane fade active show col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">All Professors  </h4>
-                                    <a href="{{route('createprof')}}" class="btn btn-primary">+ Add new</a>
+                                    <h4 class="card-title">All Students  </h4>
+                                    <a href="{{route('createstudent')}}" class="btn btn-primary">+ Add new</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -44,7 +44,6 @@
                                                 <tr>
                                                     <th></th>
                                                     <th>Nom Complet</th>
-                                                    <th>Department</th>
                                                     <th>Genre</th>
                                                     <th>Tel</th>
                                                     <th>Email</th>
@@ -52,24 +51,23 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($profs as $prof)
+                                                @foreach ($students as $student)
                                                     <tr>
-                                                        <td><img class="rounded-circle" width="35" src="{{asset('storage/'.$prof->user->image)}}" alt=""></td>
-                                                        <td>{{$prof->user->prenom.' '.$prof->user->nom}}</td>
-                                                        <td>{{$prof->departement->departement_nom}}</td>
-                                                        <td>{{$prof->user->gender}}</td>
-                                                        <td><a href="javascript:void(0);"><strong>{{$prof->user->tel}}</strong></a></td>
-                                                        <td><a href="javascript:void(0);"><strong>{{$prof->user->email}}</strong></a></td>
+                                                        <td><img class="rounded-circle" width="35" src="{{asset('storage/'.$student->user->image)}}" alt=""></td>
+                                                        <td>{{$student->user->prenom.' '.$student->user->nom}}</td>
+                                                        <td>{{$student->user->gender}}</td>
+                                                        <td><a href="javascript:void(0);"><strong>{{$student->user->tel}}</strong></a></td>
+                                                        <td><a href="javascript:void(0);"><strong>{{$student->user->email}}</strong></a></td>
                                                         <td>
-                                                            <a href="{{route('profileprof',['id' => $prof->user->id])}}" class="btn btn-sm btn-success">
+                                                            <a href="{{route('profilestudent',['id' => $student->user->id])}}" class="btn btn-sm btn-success">
                                                                 <i class="la la-eye">
                                                                 </i>
                                                             </a>
-                                                            <a href="{{route('editprof',['id' => $prof->user->id])}}" class="btn btn-sm btn-primary">
+                                                            <a href="{{route('editstudent',['id' => $student->user->id])}}" class="btn btn-sm btn-primary">
                                                                 <i class="la la-pencil">
                                                                 </i>
                                                             </a>
-                                                            <form method="POST" action="{{ route('deleteprof', ['id' => $prof->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
+                                                            <form method="POST" action="{{ route('deletestudent', ['id' => $student->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
                                                                 @csrf
                                                                 @method('DELETE')
                                                             </form>
@@ -88,7 +86,7 @@
                         </div>
                         <div id="grid-view" class="tab-pane fade col-lg-12">
                             <div class="row">
-                                @foreach ($profs as $prof)
+                                @foreach ($students as $student)
                                     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                                         <div class="card card-profile">
                                             <div class="card-header justify-content-end pb-0">
@@ -98,16 +96,16 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right border py-0">
                                                         <div class="py-2">
-                                                            <a class="dropdown-item" href="{{route('editprof',['id' => $prof->user->id])}}">Edit</a>
-                                                            <form method="POST" action="{{ route('deleteprof', ['id' => $prof->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
+                                                            <a class="dropdown-item" href="{{route('editstudent',['id' => $student->user->id])}}">Edit</a>
+                                                            <form method="POST" action="{{ route('deletestudent', ['id' => $student->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
                                                                 @csrf
                                                                 @method('DELETE')
                                                             </form>
                                                             <button class="btn btn-sm btn-danger sweet-confirm" form="delete_form{{$loop->iteration}}">
                                                                 Delete
                                                             </button>
-                                                            {{-- <a class="dropdown-item" href="{{route('editprof',['id' => $prof->user->id])}}">Edit</a>
-                                                            <form class="dropdown-item text-danger" method="POST" action="{{ route('deleteprof', ['id' => $prof->id]) }}">
+                                                            {{-- <a class="dropdown-item" href="{{route('editstudent',['id' => $student->user->id])}}">Edit</a>
+                                                            <form class="dropdown-item text-danger" method="POST" action="{{ route('deletestudent', ['id' => $student->id]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <input type="submit" value="Delete">
@@ -119,20 +117,20 @@
                                                 <div class="card-body pt-2">
                                                     <div class="text-center">
                                                         <div class="profile-photo">
-                                                            <img src="{{asset('storage/'.$prof->user->image)}}" width="100" class="img-fluid rounded-circle" alt="">
+                                                            <img src="{{asset('storage/'.$student->user->image)}}" width="100" class="img-fluid rounded-circle" alt="">
                                                         </div>
-                                                        <h3 class="mt-4 mb-1">{{$prof->user->prenom.' '.$prof->user->nom}}</h3>
+                                                        <h3 class="mt-4 mb-1">{{$student->user->prenom.' '.$student->user->nom}}</h3>
                                                         <ul class="list-group mb-3 list-group-flush">
                                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                <span class="mb-0">Genre :</span><strong>{{$prof->user->gender}}</strong></li>
+                                                                <span class="mb-0">Genre :</span><strong>{{$student->user->gender}}</strong></li>
                                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                <span class="mb-0">Tel :</span><strong>{{$prof->user->tel}}</strong></li>
+                                                                <span class="mb-0">Tel :</span><strong>{{$student->user->tel}}</strong></li>
                                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                <span class="mb-0">Email:</span><strong>{{$prof->user->email}}</strong></li>
+                                                                <span class="mb-0">Email:</span><strong>{{$student->user->email}}</strong></li>
                                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                <span class="mb-0">Address:</span><strong>{{$prof->user->adresse}}</strong></li>
+                                                                <span class="mb-0">Address:</span><strong>{{$student->user->adresse}}</strong></li>
                                                         </ul>
-                                                        <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="{{route('profileprof', ['id' => $prof->user->id])}}">Read More</a>
+                                                        <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="{{route('profilestudent', ['id' => $student->user->id])}}">Read More</a>
                                                     </div>
                                                 </div>
                                         </div>

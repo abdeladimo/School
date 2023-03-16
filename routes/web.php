@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,3 +40,13 @@ Route::get('/edit_departement/{id}',[DepartmentController::class,'edit']);
 Route::put('/update_departement',[DepartmentController::class,'update']);
 Route::delete('/delete_departement',[DepartmentController::class,'destroy']);
 //End departement controller
+//Start student controller
+Route::get('/addStudent',[StudentController::class,'create'])->name('createstudent');
+Route::post('/storeStudent',[StudentController::class,'store'])->name('storestudent');
+Route::put('/editstudent/update/{id}', [StudentController::class, 'update'])->name('updatestudent');
+Route::get('/editstudent/{id}',[StudentController::class,'edit'])->name('editstudent');
+Route::get('/allStudent',[StudentController::class,'showall'])->name('allstudent');
+Route::delete('/deletestudent/{id}', [StudentController::class, 'destroy'])->name('deletestudent');
+Route::get('/profilestudent/{id}',[StudentController::class,'profile'])->name('profilestudent');
+//End student controller
+
