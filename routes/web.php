@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ServeillantGeneralController;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,3 +61,13 @@ Route::get('/editadmin/{id}',[AdController::class,'edit'])->name('editadmin');
 Route::delete('/deleteadmin/{id}', [AdController::class, 'destroy'])->name('deleteadmin');
 Route::get('/profileadmin/{id}',[AdController::class,'profile'])->name('profileadmin');
 //end CRUD admin
+//Start student controller
+Route::get('/addStudent',[StudentController::class,'create'])->name('createstudent');
+Route::post('/storeStudent',[StudentController::class,'store'])->name('storestudent');
+Route::put('/editstudent/update/{id}', [StudentController::class, 'update'])->name('updatestudent');
+Route::get('/editstudent/{id}',[StudentController::class,'edit'])->name('editstudent');
+Route::get('/allStudent',[StudentController::class,'showall'])->name('allstudent');
+Route::delete('/deletestudent/{id}', [StudentController::class, 'destroy'])->name('deletestudent');
+Route::get('/profilestudent/{id}',[StudentController::class,'profile'])->name('profilestudent');
+//End student controller
+
