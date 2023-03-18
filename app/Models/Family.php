@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class Family extends Model
 {
     protected $fillable = [
         //
@@ -17,16 +17,13 @@ class Student extends Model
         'id'
     ];
 
-    public function departement()
-    {
-        return $this->belongsTo(departement::class);
-    }
-
     public function user(){
         return $this->belongsTo(user::class);
     }
 
-    public function family(){
-        return $this->belongsTo(family::class);
+    public function students()
+    {
+        return $this->hasMany(student::class);
     }
+
 }

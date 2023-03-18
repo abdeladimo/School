@@ -3,31 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Role;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Student;
-use App\Http\Requests\StudentRequest;
 use App\Models\Family;
+use App\Http\Requests\FamilyRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
-class StudentController extends Controller
+
+class FamilyController extends Controller
 {
     public function create(){
-        $to = route('storestudent');
-        $title = 'Ajouter eleve';
-        $families = Family::all();
-        return view('student.addstudent',compact('to','title','families'));
+        $to = route('storefamily');
+        $title = 'Ajouter parent';
+        return view('parent.addparent',compact('to','title'));
     }
 
-    public function store(StudentRequest $request){
+    public function store(FamilyRequest $request){
 
         // store user
         $user = new User();
         if($request->image){
-            $path = $request->file('image')->store('users/students');
+            $path = $request->file('image')->store('users/familys');
             $user->image = $path;
         }
-        $user->email = $request->prenom . $request->nom . '@student';
+        $user->email = $request->prenom . $request->nom . '@family';
         $user->password = hash::make($request->prenom . $request->nom);
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
@@ -38,49 +38,49 @@ class StudentController extends Controller
         $user->dateNaissance = $request->dateNaissance;
         $user->description = $request->description;
 
-        $role=Role::find(3);
+        $role=Role::find(2);
         if($role){
             if($role->users()->save($user)){
-                // store student
-                $student = new student();
-                $user->student()->save($student);
+                // store family
+                $family = new family();
+                $user->family()->save($family);
                 // return "diuvdivd";
-                return redirect('/allStudent');
+                return redirect('/allFamily');
 
             }
+        }else {
+            return back();
         }
     }
 
     public function edit($id){
         $user = User::find($id);
-        $to = route('updatestudent', ['id' => $id]);
-        $title = 'Modifier éleve';
-        $families = Family::all();
-        return view('student.addstudent', compact('user','to', 'title' ,'families'));
+        $to = route('updatefamily', ['id' => $id]);
+        $title = 'Modifier parent';
+        return view('parent.addparent', compact('user','to', 'title'));
     }
 
-    public function update(StudentRequest $request, $id){
+    public function update(FamilyRequest $request, $id){
         $user = User::find($id);
         $user->update($request->all());
-        return redirect()->route('editstudent', $user->id);
+        return redirect()->route('editfamily', $user->id);
     }
 
     public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('allstudent')->with('success', 'Student deleted successfully.');
+        return redirect()->route('allfamily')->with('success', 'Parent deleted successfully.');
     }
 
     public function profile($id){
         $user = User::find($id);
         $age = Carbon::parse($user->dateNaissance)->age;
-        return view('student.profilestudent',compact('user','age'));
+        return view('parent.profileparent',compact('user','age'));
     }
 
-
     public function showall(){
-        $students = Student::all();
-        return view('student.allstudent',compact('students'));
+        $familys = family::all();
+        return view('parent.allparent',compact('familys'));
     }
 }

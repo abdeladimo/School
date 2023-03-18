@@ -15,7 +15,7 @@
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Parents</a></li>
                     <li class="breadcrumb-item active"><a href="javascript:void(0);">{{$title}}</a></li>
                 </ol>
             </div>
@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <form action="{{$to}}" method="post">
                             @csrf
-                            @if ($title == 'Modifier éleve')
+                            @if ($title == 'Modifier parent')
                                 @method('PUT')
                             @endif
                             <div class="row">
@@ -60,31 +60,6 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Registration Date</label>
-                                        <input name="datepicker" class="datepicker-default form-control" id="datepicker">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Class</label>
-                                        <select class="form-control">
-                                            <option value="Class">Class</option>
-                                            <option value="html">HTML</option>
-                                            <option value="css">CSS</option>
-                                            <option value="javascript">JavaScript</option>
-                                            <option value="angular">Angular</option>
-                                            <option value="angular">React</option>
-                                            <option value="vuejs">Vue.js</option>
-                                            <option value="ruby">Ruby</option>
-                                            <option value="php">PHP</option>
-                                            <option value="asp">ASP.NET</option>
-                                            <option value="python">Python</option>
-                                            <option value="mysql">MySQL</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group">
                                         <label class="form-label">Gender</label>
                                         <select class="form-control" value="{{(isset($user))? $user->gender : ''}}" name="gender">
                                             <option value="Male">Male</option>
@@ -96,23 +71,6 @@
                                     <div class="form-group">
                                         <label class="form-label">Mobile Number</label>
                                         <input type="text" class="form-control" value="{{(isset($user))? $user->tel : ''}}" name="tel">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Parents Name</label>
-                                        <select class="form-control" name="parent" id="">
-                                            <option value="">Select parent ...</option>
-                                            @foreach ($families as $family)
-                                                <option value="{{ $family->id}}">{{ $family->user->prenom . " " . $family->user->nom}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Date of Birth</label>
-                                        <input name="datepicker" class="datepicker-default form-control" id="datepicker1" value="{{(isset($user))? $user->dateNaissance : ''}}" name="dateNaissance">
                                     </div>
                                 </div>
                                 {{-- <div class="col-lg-6 col-md-6 col-sm-12">

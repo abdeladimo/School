@@ -47,4 +47,9 @@ class User extends Model implements Authenticatable
     {
         return $this->hasOne(student::class);
     }
+
+    public function family()
+    {
+        return $this->hasOne(Family::class);
+    }
 }

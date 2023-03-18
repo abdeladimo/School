@@ -10,14 +10,14 @@
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4>All Students</h4>
+                        <h4>All Parents</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="{{route('allprof')}}">Students</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Students</a></li>
+                        <li class="breadcrumb-item active"><a href="{{route('allfamily')}}">Parents</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">All Parents</a></li>
                     </ol>
                 </div>
             </div>
@@ -34,8 +34,8 @@
                         <div id="list-view" class="tab-pane fade active show col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">All Students  </h4>
-                                    <a href="{{route('createstudent')}}" class="btn btn-primary">+ Add new</a>
+                                    <h4 class="card-title">All Parents </h4>
+                                    <a href="{{route('createfamily')}}" class="btn btn-primary">+ Add new</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -51,24 +51,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($students as $student)
-                                                @if ($student->user)
+                                                @foreach ($familys as $family)
+                                                @if ($family->user)
                                                     <tr>
-                                                        <td><img class="rounded-circle" width="35" src="{{asset('storage/'.$student->user->image)}}" alt=""></td>
-                                                        <td>{{$student->user->prenom.' '.$student->user->nom}}</td>
-                                                        <td>{{$student->user->gender}}</td>
-                                                        <td><a href="javascript:void(0);"><strong>{{$student->user->tel}}</strong></a></td>
-                                                        <td><a href="javascript:void(0);"><strong>{{$student->user->email}}</strong></a></td>
+                                                        <td><img class="rounded-circle" width="35" src="{{asset('storage/'.$family->user->image)}}" alt=""></td>
+                                                        <td>{{$family->user->prenom.' '.$family->user->nom}}</td>
+                                                        <td>{{$family->user->gender}}</td>
+                                                        <td><a href="javascript:void(0);"><strong>{{$family->user->tel}}</strong></a></td>
+                                                        <td><a href="javascript:void(0);"><strong>{{$family->user->email}}</strong></a></td>
                                                         <td>
-                                                            <a href="{{route('profilestudent',['id' => $student->user->id])}}" class="btn btn-sm btn-success">
+                                                            <a href="{{route('profilefamily',['id' => $family->user->id])}}" class="btn btn-sm btn-success">
                                                                 <i class="la la-eye">
                                                                 </i>
                                                             </a>
-                                                            <a href="{{route('editstudent',['id' => $student->user->id])}}" class="btn btn-sm btn-primary">
+                                                            <a href="{{route('editfamily',['id' => $family->user->id])}}" class="btn btn-sm btn-primary">
                                                                 <i class="la la-pencil">
                                                                 </i>
                                                             </a>
-                                                            <form method="POST" action="{{ route('deletestudent', ['id' => $student->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
+                                                            <form method="POST" action="{{ route('deletefamily', ['id' => $family->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
                                                                 @csrf
                                                                 @method('DELETE')
                                                             </form>
@@ -78,7 +78,7 @@
                                                             </button>
                                                         </td>
                                                     </tr>
-                                                 @endif
+                                                @endif
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -88,7 +88,7 @@
                         </div>
                         <div id="grid-view" class="tab-pane fade col-lg-12">
                             <div class="row">
-                                @foreach ($students as $student)
+                                @foreach ($familys as $family)
                                     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                                         <div class="card card-profile">
                                             <div class="card-header justify-content-end pb-0">
@@ -98,16 +98,16 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right border py-0">
                                                         <div class="py-2">
-                                                            <a class="dropdown-item" href="{{route('editstudent',['id' => $student->user->id])}}">Edit</a>
-                                                            <form method="POST" action="{{ route('deletestudent', ['id' => $student->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
+                                                            <a class="dropdown-item" href="{{route('editfamily',['id' => $family->user->id])}}">Edit</a>
+                                                            <form method="POST" action="{{ route('deletefamily', ['id' => $family->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
                                                                 @csrf
                                                                 @method('DELETE')
                                                             </form>
                                                             <button class="btn btn-sm btn-danger sweet-confirm" form="delete_form{{$loop->iteration}}">
                                                                 Delete
                                                             </button>
-                                                            {{-- <a class="dropdown-item" href="{{route('editstudent',['id' => $student->user->id])}}">Edit</a>
-                                                            <form class="dropdown-item text-danger" method="POST" action="{{ route('deletestudent', ['id' => $student->id]) }}">
+                                                            {{-- <a class="dropdown-item" href="{{route('editfamily',['id' => $family->user->id])}}">Edit</a>
+                                                            <form class="dropdown-item text-danger" method="POST" action="{{ route('deletefamily', ['id' => $family->id]) }}">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <input type="submit" value="Delete">
@@ -119,20 +119,20 @@
                                                 <div class="card-body pt-2">
                                                     <div class="text-center">
                                                         <div class="profile-photo">
-                                                            <img src="{{asset('storage/'.$student->user->image)}}" width="100" class="img-fluid rounded-circle" alt="">
+                                                            <img src="{{asset('storage/'.$family->user->image)}}" width="100" class="img-fluid rounded-circle" alt="">
                                                         </div>
-                                                        <h3 class="mt-4 mb-1">{{$student->user->prenom.' '.$student->user->nom}}</h3>
+                                                        <h3 class="mt-4 mb-1">{{$family->user->prenom.' '.$family->user->nom}}</h3>
                                                         <ul class="list-group mb-3 list-group-flush">
                                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                <span class="mb-0">Genre :</span><strong>{{$student->user->gender}}</strong></li>
+                                                                <span class="mb-0">Genre :</span><strong>{{$family->user->gender}}</strong></li>
                                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                <span class="mb-0">Tel :</span><strong>{{$student->user->tel}}</strong></li>
+                                                                <span class="mb-0">Tel :</span><strong>{{$family->user->tel}}</strong></li>
                                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                <span class="mb-0">Email:</span><strong>{{$student->user->email}}</strong></li>
+                                                                <span class="mb-0">Email:</span><strong>{{$family->user->email}}</strong></li>
                                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                                <span class="mb-0">Address:</span><strong>{{$student->user->adresse}}</strong></li>
+                                                                <span class="mb-0">Address:</span><strong>{{$family->user->adresse}}</strong></li>
                                                         </ul>
-                                                        <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="{{route('profilestudent', ['id' => $student->user->id])}}">Read More</a>
+                                                        <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="{{route('profilefamily', ['id' => $family->user->id])}}">Read More</a>
                                                     </div>
                                                 </div>
                                         </div>

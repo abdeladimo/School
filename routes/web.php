@@ -6,6 +6,8 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ServeillantGeneralController;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\FamilyController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,4 +72,12 @@ Route::get('/allStudent',[StudentController::class,'showall'])->name('allstudent
 Route::delete('/deletestudent/{id}', [StudentController::class, 'destroy'])->name('deletestudent');
 Route::get('/profilestudent/{id}',[StudentController::class,'profile'])->name('profilestudent');
 //End student controller
-
+//Start pamily controller
+Route::get('/addFamily',[FamilyController::class,'create'])->name('createfamily');
+Route::post('/storeFamily',[FamilyController::class,'store'])->name('storefamily');
+Route::put('/editfamily/update/{id}', [FamilyController::class, 'update'])->name('updatefamily');
+Route::get('/editfamily/{id}',[FamilyController::class,'edit'])->name('editfamily');
+Route::get('/allFamily',[FamilyController::class,'showall'])->name('allfamily');
+Route::delete('/deletefamily/{id}', [FamilyController::class, 'destroy'])->name('deletefamily');
+Route::get('/profilefamily/{id}',[FamilyController::class,'profile'])->name('profilefamily');
+//End pamily controller
