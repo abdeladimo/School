@@ -14,6 +14,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServeillantGeneralController;
 use App\Http\Controllers\SalleController;
+use App\Http\Controllers\EmploiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,7 +124,7 @@ Route::put('/update_Niveau',[NiveauController::class,'update']);
 Route::delete('/delete/{id}',[NiveauController::class,'delete_sous_niveau']);
 Route::delete('/delete-niveau/{id}',[NiveauController::class,'destroy']);
 //end routes Niveau
-//start routes matiere
+//start routes matieregi
 Route::get('/matiere',[MatiereController::class,'index'])->name('matiere');
 Route::post('/add_matiere',[MatiereController::class,'store'])->name('add_matiere');
 Route::get('/edit/{id}',[MatiereController::class,'edit']);
@@ -131,9 +132,7 @@ Route::put('/update_matiere',[MatiereController::class,'update']);
 Route::delete('/delete-matiere/{id}',[MatiereController::class,'destroy']);
 //end routes matiere
 //start routes Emploi
-Route::get('/emploi',function(){
-    return view('Emploi_du_temps.emploi');
-})->name('emploi');
+Route::get('/emploi',[EmploiController::class,'index'])->name('emploi');
 //end routes Emploi
 //start routes Notification
 Route::resource('/posts',PostController::class);
