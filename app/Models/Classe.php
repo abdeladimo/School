@@ -22,4 +22,7 @@ class Classe extends Model
         return $this->belongsTo(Surveillant_Generale::class, 'surveillant_general_id');
     }
 
+    public function seances(){
+        return $this->hasMany(Seance::class);
+    }
 }

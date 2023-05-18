@@ -7,6 +7,56 @@
     <div class="container-fluid">
 
         <div class="row page-titles">
+            <div class="col-sm-12 p-md-0">
+                <div class="welcome-text">
+                    <h3 class="fw-bold">Ajouter séance</h3>
+                </div>
+                <form>
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <label for="time-begin" class="form-label">Heure d'entrée</label>
+                            <input type="time" class="form-control" id="time-begin" name="time_begin">
+                        </div>
+                        <div class="col">
+                            <label for="time-end" class="form-label">Heure de sortie</label>
+                            <input type="time" class="form-control" id="time-end" name="time_end">
+                        </div>
+                        <div class="col-auto">
+                            <label for="seance-day" class="form-label">Jour</label>
+                            <select class="form-select" id="seance-day" name="seance_day">
+                                <option value="mon">Lundi</option>
+                                <option value="tue">Mardi</option>
+                                <option value="wed">Mercredi</option>
+                                <option value="thu">Jeudi</option>
+                                <option value="fri">Vendredi</option>
+                                <option value="sat">Samedi</option>
+                                <option value="sun">Dimanche</option>
+                            </select>
+                        </div>
+                    </div>
+                    <span class="alert text-danger d-none">S'il vous plaît remplir les champs des heures correctement et/ou séléctionner un jour.</span>
+                    <div class="mb-3 row reste">
+                        <div class="col-sm-9">
+                            <label for="profs" class="form-label">Profs</label>
+                            <select class="form-select" id="profs" name="profs">
+                            </select>
+                        </div>
+                        <div class="col">
+                          <label for="classes" class="form-label">Classes</label>
+                          <select class="form-select" id="classes" name="classes">
+                          </select>
+                        </div>
+                    </div>
+                    <div class="mb-3  reste">
+                      <label for="rooms" class="form-label">Salles</label>
+                      <select class="form-select" id="rooms" name="rooms">
+                      </select>
+                    </div>
+                    <button type="submit" id="btn-add-seance" class="btn btn-primary reste">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="row page-titles">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
                     <h3 class="fw-bold">Emploi du Temps</h3>
@@ -715,4 +765,5 @@
         $("#profs,#matiere,#salle,#classe").select2();
     });
 </script>
+<script src="{{ asset('js/api/seance/seance.js') }}"></script>
 @endsection
