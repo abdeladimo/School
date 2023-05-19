@@ -9,4 +9,8 @@ class Salle extends Model
 {
     use HasFactory;
     protected $fillable = ['salle_number'];
+
+    public function seances(){
+        return $this->hasMany(Seance::class);
+    }
 }

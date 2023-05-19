@@ -17,6 +17,9 @@ class Prof extends Model
      * @var array
      */
     protected $fillable = ['user_id'];
+    protected $with = [
+        'user',
+    ];
     public $timestamps = false;
 
     /**
@@ -32,5 +35,8 @@ class Prof extends Model
     }
     public function matiere(){
         return $this->belongsTo(matiere::class);
+    }
+    public function seances(){
+        return $this->hasMany(Seance::class);
     }
 }

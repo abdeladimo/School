@@ -15,6 +15,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServeillantGeneralController;
 use App\Http\Controllers\SalleController;
 use App\Http\Controllers\EmploiController;
+use App\Http\Controllers\SeanceController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -133,6 +135,10 @@ Route::delete('/delete-matiere/{id}',[MatiereController::class,'destroy']);
 //end routes matiere
 //start routes Emploi
 Route::get('/emploi',[EmploiController::class,'index'])->name('emploi');
+Route::get('/available-profs',[SeanceController::class,'availableProfs'])->name('available-profs');
+Route::get('/available-classes',[SeanceController::class,'availableClasses'])->name('available-classes');
+Route::get('/available-salles',[SeanceController::class,'availableSalles'])->name('available-salles');
+Route::resource('seances', SeanceController::class);
 //end routes Emploi
 //start routes Notification
 Route::resource('/posts',PostController::class);
