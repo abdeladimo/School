@@ -74,7 +74,7 @@
         <div class="row">
             <div class="col mb-2">
                 <h6 class="fw-bold">CLASSE :*</h6>
-                <select class="form-select" aria-label="Default select example" id="classe">
+                <select class="form-select" aria-label="Default select example" id="classes-filter">
                     <option selected>--Choix--</option>
                     @foreach ($classes as $classe)
                     <option value="{{ $classe->id }}">{{ $classe->nom }}</option>
@@ -124,10 +124,11 @@
                                                 <th>JEUDI</th>
                                                 <th>VENDREDI</th>
                                                 <th>SAMEDI</th>
+                                                <th>DIMANCHE</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
+                                        <tbody id="tbl_seance">
+                                            {{-- <tr>
                                                 <td>
                                                     <div class="input-group">
                                                         <input type="time" aria-label="Last name" class="form-control ms-1">
@@ -742,7 +743,7 @@
                                                         <option value="3">Three</option>
                                                     </select>
                                                 </div></td>
-                                            </tr>
+                                            </tr> --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -765,5 +766,6 @@
         $("#profs,#matiere,#salle,#classe").select2();
     });
 </script>
+<script src="{{ asset('js/api/seance/all-seances.js') }}"></script>
 <script src="{{ asset('js/api/seance/seance.js') }}"></script>
 @endsection

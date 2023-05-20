@@ -19,6 +19,16 @@ class ClassController extends Controller
         return view('class.allclass', compact('niveaux','sg','profs','class'));
     }
 
+    public function index()
+    {
+        $classes = Classe::all();
+        return response()->json(
+            compact(
+                'classes',
+            )
+        );
+    }
+
     public function store(Request $request){
         $class = new Classe();
         $class->nom = $request->nom;

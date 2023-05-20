@@ -48,6 +48,7 @@ const showDialogResponse = (data) => {
     if (data.status == 200) {
         let seance = data.result;
         checkAvailability();
+        $("select#classes-filter").trigger("change");
         // alertMsg(msg);
     } else if (data.status == 409) {
         // alertMsg(msg, "danger");

@@ -17,9 +17,22 @@ class SeanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->filter == 'classe') {
+            if ($classe = Classe::find($request->classe)) {
+                $seances = $classe->seances()->orderBy('time_begin', 'asc')->get();
+            }else {
+                $seances = [];
+            }
+        } else {
+            $seances = Seance::all();
+        }
+        return response()->json(
+            compact(
+                'seances',
+            )
+        );
     }
 
     /**

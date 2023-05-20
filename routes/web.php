@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfController;
 use App\Http\Controllers\FamilyController;
@@ -105,6 +106,7 @@ Route::post('/storeClass',[ClassController::class,'store'])->name('storeclass');
 Route::delete('/deleteClass/{id}', [ClassController::class, 'destroy'])->name('deleteclass');
 Route::put('/editClass/update/{id}', [ClassController::class, 'update'])->name('updateclass');
 Route::get('/edit_class/{id}',[ClassController::class,'edit']);
+Route::resource('classes', ClassController::class);
 //End Class controller
 //Start Salle controller
 Route::get('/allSalles',[SalleController::class,'showall'])->name('allsalles');
