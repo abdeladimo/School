@@ -17,6 +17,8 @@ use App\Http\Controllers\ServeillantGeneralController;
 use App\Http\Controllers\SalleController;
 use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\PaypalPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,10 @@ use App\Http\Controllers\SeanceController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/paypal', function () {
+//     return view('paypal');
+// });
 
 Auth::routes();
 
@@ -145,6 +151,16 @@ Route::resource('seances', SeanceController::class);
 //start routes Notification
 Route::resource('/posts',PostController::class);
 Route::resource('/comment',CommentController::class);
-
+//end routes Notification
+//start routes paypal paiement
+Route::get('/paypal',[PaypalPaymentController::class,'paypal'])->name('paypal');
+Route::get('/payment',[PaypalPaymentController::class,'payment'])->name('payment');
+Route::get('/cancel',[PaypalPaymentController::class,'cancel'])->name('payment.cancel');
+Route::get('/payment/success',[PaypalPaymentController::class,'success'])->name('payment.success');
+//end routes paypal paiement
+//start routes stripe paiement
+Route::get('/stripe',[StripePaymentController::class,'stripe'])->name('stripe');
+Route::post('/Stripe',[StripePaymentController::class,'stripePost'])->name('stripe.post');
+//end routes stripe paiement
 
 
