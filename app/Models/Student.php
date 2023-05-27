@@ -25,4 +25,8 @@ class Student extends Model
     public function family(){
         return $this->belongsTo(family::class);
     }
+
+    public function classe(){
+        return $this->belongsTo(Classe::class);
+    }
 }

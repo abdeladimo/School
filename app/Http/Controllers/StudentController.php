@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Student;
 use App\Http\Requests\StudentRequest;
 use App\Models\Family;
+use App\Models\Classe;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 class StudentController extends Controller
@@ -16,7 +17,8 @@ class StudentController extends Controller
         $to = route('storestudent');
         $title = 'Ajouter eleve';
         $families = Family::all();
-        return view('student.addstudent',compact('to','title','families'));
+        $classes = Classe::all();
+        return view('student.addstudent',compact('to','title','families','classes'));
     }
 
     public function store(StudentRequest $request){
@@ -55,7 +57,8 @@ class StudentController extends Controller
         $to = route('updatestudent', ['id' => $id]);
         $title = 'Modifier éleve';
         $families = Family::all();
-        return view('student.addstudent', compact('user','to', 'title' ,'families'));
+        $classes = Classe::all();
+        return view('student.addstudent', compact('user','to', 'title' ,'families','classes'));
     }
 
     public function update(StudentRequest $request, $id){

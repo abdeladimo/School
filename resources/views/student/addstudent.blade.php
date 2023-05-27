@@ -64,22 +64,14 @@
                                         <input type="text" class="form-control" value="{{(isset($user))? $user->email : ''}}" name="email">
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
+                             <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Class</label>
-                                        <select class="form-control">
-                                            <option value="Class">Class</option>
-                                            <option value="html">HTML</option>
-                                            <option value="css">CSS</option>
-                                            <option value="javascript">JavaScript</option>
-                                            <option value="angular">Angular</option>
-                                            <option value="angular">React</option>
-                                            <option value="vuejs">Vue.js</option>
-                                            <option value="ruby">Ruby</option>
-                                            <option value="php">PHP</option>
-                                            <option value="asp">ASP.NET</option>
-                                            <option value="python">Python</option>
-                                            <option value="mysql">MySQL</option>
+                                        <label class="form-label">Classe</label>
+                                        <select class="form-control" name="class" id="">
+                                            <option value="">Select Classe ...</option>
+                                            @foreach ($classes as $class)
+                                                <option value="{{ $class->id}}">{{$class->nom}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
