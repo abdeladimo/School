@@ -25,4 +25,8 @@ class Classe extends Model
     public function seances(){
         return $this->hasMany(Seance::class);
     }
+
+    public function students(){
+        return $this->hasMany(Student::class);
+    }
 }
