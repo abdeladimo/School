@@ -11,7 +11,6 @@ class Seance extends Model
 
     protected $with = [
         'prof',
-        'classe',
         'salle',
     ];
 
@@ -23,5 +22,8 @@ class Seance extends Model
     }
     public function salle(){
         return $this->belongsTo(Salle::class);
+    }
+    public function absences(){
+        return $this->hasMany(Absence::class);
     }
 }

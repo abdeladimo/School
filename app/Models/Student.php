@@ -17,6 +17,9 @@ class Student extends Model
         'id'
     ];
 
+    protected $with = [
+        'user',
+    ];
 
     public function user(){
         return $this->belongsTo(user::class);
@@ -26,7 +29,12 @@ class Student extends Model
         return $this->belongsTo(family::class);
     }
 
-    public function classe(){
+    public function classe()
+    {
         return $this->belongsTo(Classe::class);
+    }
+
+    public function absences(){
+        return $this->hasMany(Absence::class);
     }
 }

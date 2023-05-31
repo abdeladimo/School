@@ -9,6 +9,10 @@ class Classe extends Model
 {
     use HasFactory;
     protected $fillable = ['nom','niveau_id','surveillant_general_id','prof_id'];
+    protected $with = [
+        'seances',
+        'students.absences',
+    ];
 
     public function niveau(){
         return $this->belongsTo(Niveau::class);
@@ -26,7 +30,8 @@ class Classe extends Model
         return $this->hasMany(Seance::class);
     }
 
-    public function students(){
+    public function students()
+    {
         return $this->hasMany(Student::class);
     }
 }
