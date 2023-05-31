@@ -69,4 +69,5 @@
 @section('custom-scripts')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/api/absence/add-absence.js') }}"></script>
+    <script src="{{ asset('js/api/absence/list-absences.js') }}"></script>
 @endsection
