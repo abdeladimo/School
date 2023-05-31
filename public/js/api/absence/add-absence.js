@@ -79,7 +79,9 @@ const displayListAbsence = (classe) => {
             $.each(classe.seances, function (indexInArraySeances, seance) {
                 if (seance.seance_day == indexInArrayDays) {
                     let td = $("<td>");
-                    let checkbox = $(`<input type="checkbox" value='{"student": ${student.id}, "seance": ${seance.id}, "absence_date": "${clonedCurrentStartWeek.toISOString().split('T')[0]}"}'>`);
+                    let absence_date = clonedCurrentStartWeek.toISOString().split('T')[0];
+                    let is_absent = checkAbsence(student, seance, absence_date);
+                    let checkbox = $(`<input type="checkbox" ${is_absent ? "checked" : ""} value='{"student": ${student.id}, "seance": ${seance.id}, "absence_date": "${absence_date}"}'>`);
                     td.append(checkbox);
                     seance_tr_check_absence.append(td);
                 }
@@ -146,4 +148,5 @@ const navigateDate = (e) => {
     let diff = (direction == `+`) ? 7 : -7;
     currentStartWeek.setDate(currentStartWeek.getDate() + diff);
     $("input#selected-date").val(currentStartWeek.toLocaleDateString());
+    $("select#classes").trigger("change");
 }
