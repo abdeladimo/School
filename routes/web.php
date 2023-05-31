@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsenceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\ClassController;
@@ -162,5 +163,7 @@ Route::get('/payment/success',[PaypalPaymentController::class,'success'])->name(
 Route::get('/stripe',[StripePaymentController::class,'stripe'])->name('stripe');
 Route::post('/Stripe',[StripePaymentController::class,'stripePost'])->name('stripe.post');
 //end routes stripe paiement
-
-
+//start routes Absence
+Route::view('absence', 'absence.absence')->name('absence-view');
+Route::resource('absences', AbsenceController::class);
+//end routes Absence
