@@ -44,6 +44,7 @@ const addAbsence = async (e) => {
       }).get();
     let dataToSend = {
         "absences": absences,
+        "currentStartWeek": currentStartWeek.toISOString().split('T')[0],
     }
     addData("absences", dataToSend, showDialogResponse);
 }
@@ -54,6 +55,7 @@ const addAbsence = async (e) => {
 const showDialogResponse = (data) => {
     // let msg = "OK";
     if (data.status == 200) {
+        getAllData("classes", fillSelectClasses);
         // alertMsg(msg);
     } else {
         let errors = data.errors;
@@ -143,7 +145,6 @@ const startOfWeek = () => {
     return currentStartWeek.toLocaleDateString();
 }
 const navigateDate = (e) => {
-    debugger
     let direction = $(e.target).data("direction");
     let diff = (direction == `+`) ? 7 : -7;
     currentStartWeek.setDate(currentStartWeek.getDate() + diff);
