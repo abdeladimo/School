@@ -6,6 +6,7 @@ use App\Models\Absence;
 use App\Models\Classe;
 use App\Models\Seance;
 use App\Models\Student;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 
 class AbsenceController extends Controller
@@ -38,6 +39,14 @@ class AbsenceController extends Controller
      */
     public function store(Request $request)
     {
+        // delete all previous absences between a period
+        $request->whenFilled('currentStartWeek', function ($input) {
+            $startDate = new CarbonImmutable($input);
+            $endDate = $startDate->addDays(6);
+            $format = 'Y-m-d';
+            Absence::whereBetween('absence_date', [$startDate->format($format), $endDate->format($format)])->delete();
+        });
+        // add new absences
         foreach ($request->absences as $absence) {
             $new_absence = new Absence;
             $new_absence->absence_date = $absence['absence_date'];
