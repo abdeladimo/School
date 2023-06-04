@@ -4,7 +4,7 @@
     Name                 : Edumin
     Author               : Dexignlabs
     Author Portfolio     : https://themeforest.net/user/dexignlabs/portfolio
-    
+
 
 
     Table of Sass Contents
@@ -16,7 +16,7 @@
         _mixin
         _variable
 
-    2. bootstrap 
+    2. bootstrap
         -Here goes all official bootstrap scss files
 
     3. Global/Base
@@ -11515,7 +11515,14 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   .dlabnav .metismenu {
     display: flex;
     flex-direction: column;
-    padding: 10px; }
+    height: 100%;
+    overflow-y: scroll;
+    padding: 10px 0;
+    scrollbar-color: transparent transparent;
+    }
+     .dlabnav .metismen::-webkit-scrollbar {
+        display: none;
+     }
     .dlabnav .metismenu.fixed {
       position: fixed;
       top: 0;
@@ -12533,7 +12540,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     margin-left: 9.375rem; }
 
   [data-sidebar-style="modern"][data-layout="vertical"] .dlabnav {
-    width: 9.375rem;
+    width: 10.375rem;
     left: 0; }
     [direction="rtl"][data-sidebar-style="modern"][data-layout="vertical"] .dlabnav {
       left: auto;
@@ -12553,10 +12560,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
         [data-sidebar-style="modern"][data-layout="vertical"] .dlabnav .metismenu li a:before {
           content: none; }
       [data-sidebar-style="modern"][data-layout="vertical"] .dlabnav .metismenu li ul {
-        position: absolute;
-        left: 105%;
-        top: 0;
-        bottom: auto;
+        margin: auto;
+        max-width: 100%;
         background-color: #fff;
         border: 1px solid #eaeaea;
         width: 200px; }
@@ -12568,9 +12573,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
           right: 105%; }
       [data-sidebar-style="modern"][data-layout="vertical"] .dlabnav .metismenu li:hover > ul {
         display: block;
-        left: 100%;
         padding: 1rem 0;
-        margin-left: -10px;
+        margin: auto;
         border: 0;
         box-shadow: 5px 0px 13px 0px rgba(82, 63, 105, 0.05); }
         [data-theme-version="dark"][data-sidebar-style="modern"][data-layout="vertical"] .dlabnav .metismenu li:hover > ul {
