@@ -57,6 +57,7 @@ class SeanceController extends Controller
         $seance->time_begin = $request->time_begin;
         $seance->time_end = $request->time_end;
         $seance->seance_day = $request->day;
+        $seance->seance_color = $request->color;
         if ($prof = Prof::find($request->prof)) {
             if ($prof->seances()->save($seance)) {
                 if ($classe = Classe::find($request->classe)) {

@@ -46,7 +46,7 @@ const getAllSeances = (data) => {
         $.each(days, function (indexInArray, day) {
             let td = $(`<td>`);
             if (seance.seance_day == indexInArray) {
-                td.html(`<div class="col mb-2">${seance.prof.user.nom} - ${seance.salle.salle_number}</div>`);
+                td.html(`<div class="col mb-2" style="background-color:${seance.seance_color}; ${seance.seance_color == "#000000"? "color:white;" : (seance.seance_color == "#ffffff"? "color:black;" : "")}">${seance.prof.user.nom} - ${seance.salle.salle_number}</div>`);
             }
             else {
                 td.html(`<div class="col mb-2">-</div>`);
