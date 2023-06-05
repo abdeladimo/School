@@ -89,14 +89,11 @@
                 </a>
             </li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                    <i class="la la-users"></i>
-                    <span class="nav-text">Staff</span>
+                    <i class="la la-dollar"></i>
+                    <span class="nav-text">Divers</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="all-staff.html">All Staff</a></li>
-                    <li><a href="add-staff.html">Add Staff</a></li>
-                    <li><a href="edit-staff.html">Edit Staff</a></li>
-                    <li><a href="staff-profile.html">Staff Profile</a></li>
+                    <li><a href="{{route('Divers')}}">Divers</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">

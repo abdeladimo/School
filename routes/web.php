@@ -20,6 +20,7 @@ use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PaypalPaymentController;
+use App\Http\Controllers\DiverController;
 
 /*
 |--------------------------------------------------------------------------
@@ -167,3 +168,6 @@ Route::post('/Stripe',[StripePaymentController::class,'stripePost'])->name('stri
 Route::view('absence', 'absence.absence')->name('absence-view');
 Route::resource('absences', AbsenceController::class);
 //end routes Absence
+//start routes Diver
+Route::get('/Diver',[DiverController::class,'index'])->name('Divers');
+//end routes Diver
