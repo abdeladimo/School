@@ -34,6 +34,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Nom de Classe</th>
+                                                    <th>Nb. max des étudiants</th>
                                                     <th>Niveau</th>
                                                     <th>Surveillant General</th>
                                                     <th>prof</th>
@@ -44,6 +45,7 @@
                                                 @foreach ($class as $c)
                                                     <tr>
                                                         <td>{{ $c->nom }}</td>
+                                                        <td>{{ $c->nb_max_student }}</td>
                                                         <td>{{ $c->niveau ? $c->niveau->nom : 'pas affecté' }}</td>
                                                         <td>{{ $c->surveillant_generale ? $c->surveillant_generale->user->prenom .' '.$c->surveillant_generale->user->nom : 'pas affecté' }}</td>
                                                         <td>{{  $c->prof ? $c->prof->user->prenom .' '. $c->prof->user->nom : 'pas affecté'}}</td>
@@ -88,6 +90,10 @@
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Nom Classe : </label>
                             <input type="text" class="form-control" id="recipient-name" name="nom">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nb-max-student" class="col-form-label">Nb. max. des étudiants : </label>
+                            <input type="number" class="form-control" id="nb-max-student" value="{{ env('CLASSE_NB_MAX_STUDENT')}}" name="nb_max_student">
                         </div>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Niveau : </label>
@@ -148,6 +154,10 @@
                             <input type="text" class="form-control" id="nom" name="nom">
                         </div>
                         <div class="mb-3">
+                            <label for="nb-max-student-edit" class="col-form-label">Nb. max. des étudiants : </label>
+                            <input type="number" class="form-control" id="nb-max-student-edit" value="{{ env('CLASSE_NB_MAX_STUDENT')}}" name="nb_max_student">
+                        </div>
+                        <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Niveau : </label>
                             <select class="form-control" tabindex="-98" name="niveau_id">
                                 <option value="" selected disabled>Niveau</option>
@@ -204,6 +214,7 @@
                     url: "/edit_class/" + id,
                     success: function(filiere) {
                         $('#nom').val(filiere.nom);
+                        $("input#nb-max-student-edit").val(filiere.nb_max_student);
                     }
                 })
             });
