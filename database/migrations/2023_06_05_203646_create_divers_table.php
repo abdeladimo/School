@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->float('montant');
+            $table->string('date');
             $table->timestamps();
         });
     }
