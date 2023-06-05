@@ -24,6 +24,7 @@ const addSeance = async (e) => {
     let time_begin = $("input#time-begin").val();
     let time_end = $("input#time-end").val();
     let day = $("select#seance-day").val();
+    let seance_color = $("input#seance-color").val();
     if (day == "" || time_begin == "" || time_end == "" || time_begin > time_end) {
         alert(`S'il vous plaît remplir les champs des heures et/ou séléctionner un jour.`);
         return;
@@ -32,6 +33,7 @@ const addSeance = async (e) => {
             "time_begin": time_begin,
             "time_end": time_end,
             "day": day,
+            "color": seance_color,
             "prof": $("select#profs").val(),
             "classe": $(`select#classes`).val(),
             "room": $("select#rooms").val(),

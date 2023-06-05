@@ -52,6 +52,10 @@
                       <select class="form-select" id="rooms" name="rooms">
                       </select>
                     </div>
+                    <div class="mb-3 reste">
+                      <label for="seance-color" class="form-label">Couleur</label>
+                      <input type="color" name="seance_color" id="seance-color">
+                    </div>
                     <button type="submit" id="btn-add-seance" class="btn btn-primary reste">Submit</button>
                 </form>
             </div>
