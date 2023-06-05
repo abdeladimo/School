@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Classe extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom','niveau_id','surveillant_general_id','prof_id'];
+    protected $fillable = [
+        'nom',
+        'niveau_id',
+        'surveillant_general_id',
+        'prof_id',
+        'nb_max_student',
+    ];
     protected $with = [
         'seances',
         'students.absences',

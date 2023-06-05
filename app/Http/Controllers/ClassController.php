@@ -32,6 +32,9 @@ class ClassController extends Controller
     public function store(Request $request){
         $class = new Classe();
         $class->nom = $request->nom;
+        $request->whenFilled('nb_max_student', function ($input) use ($class) {
+            $class->nb_max_student = $input;
+        });
         $class->niveau_id = $request->nv;
         $class->surveillant_general_id = $request->sg;
         $class->prof_id = $request->prof;
