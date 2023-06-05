@@ -11,4 +11,15 @@ class DiverController extends Controller
         $divers = Diver::all();
         return view('divers.alldivers',compact('divers'));
     }
+
+    public function store(Request $request)
+    {
+        //
+        $diver = new Diver();
+        $diver->type = $request->type;
+        $diver->montant = $request->montant;
+        $diver->date = $request->date;
+        $diver->save();
+        return redirect('/Diver');
+    }
 }

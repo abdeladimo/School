@@ -170,4 +170,5 @@ Route::resource('absences', AbsenceController::class);
 //end routes Absence
 //start routes Diver
 Route::get('/Diver',[DiverController::class,'index'])->name('Divers');
+Route::post('/Add_Diver',[DiverController::class,'store'])->name('add_diver');
 //end routes Diver

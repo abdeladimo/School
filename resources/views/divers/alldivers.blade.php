@@ -26,7 +26,7 @@
                                 <div class="card-header">
                                     <h4 class="card-title">Tous les Divers</h4>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#addnew" data-bs-whatever="@mdo">+ Add new</button>
+                                        data-bs-target="#addnew" data-bs-whatever="@mdo">+ Ajouter Diver</button>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -90,12 +90,19 @@
                     <h5 class="modal-title" id="exampleModalLabel">Ajouter Diver</h5>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{route('add_diver')}}">
                         @csrf
                         <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Numero de Salle : </label>
-                            <input type="number" class="form-control" id="recipient-name" name="salle_number"
-                                min="1">
+                            <label for="recipient-name" class="col-form-label">Type </label>
+                            <input type="text" class="form-control" id="recipient-name" name="type" min="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Montant </label>
+                            <input type="number" class="form-control" id="recipient-name" name="montant" min="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Date </label>
+                            <input type="date" class="form-control" id="recipient-name" name="date" min="1">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
