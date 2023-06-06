@@ -171,4 +171,6 @@ Route::resource('absences', AbsenceController::class);
 //start routes Diver
 Route::get('/Diver',[DiverController::class,'index'])->name('Divers');
 Route::post('/Add_Diver',[DiverController::class,'store'])->name('add_diver');
+Route::get('/editDiver/update/{id}',[DiverController::class,'edit']);
+Route::put('/Edit_Diver/update/{id}', [DiverController::class, 'update']);
 //end routes Diver
