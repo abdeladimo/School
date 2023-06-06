@@ -93,8 +93,8 @@
                     <form method="POST" action="{{route('add_diver')}}">
                         @csrf
                         <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Type </label>
-                            <input type="text" class="form-control" id="recipient-name" name="type" min="1">
+                            <label for="type" class="col-form-label">Type </label>
+                            <input type="text" class="form-control" name="type" min="1">
                         </div>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Montant </label>
@@ -119,15 +119,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Classe</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Diver</h5>
                 </div>
                 <div class="modal-body">
                     <form id="form_update" method="POST" action="#">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Number : </label>
-                            <input type="number" min="1" class="form-control" id="nom" name="salle_number">
+                            <label for="recipient-name" class="col-form-label">Type </label>
+                            <input type="text" class="form-control" id="type" name="type">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Montant </label>
+                            <input type="number" min="1" class="form-control" id="montant" name="montant">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Date </label>
+                            <input type="date" class="form-control" id="date" name="date">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -146,14 +154,16 @@
         $(document).ready(function() {
             $(document).on('click', '.btnedit', function() {
                 var id = $(this).val();
-                var to = "/editSalle/update/";
+                var to = "/Edit_Diver/update/";
                 $('#update').modal('show');
                 $('#form_update').prop("action", to + id);
                 $.ajax({
                     type: "GET",
-                    url: "/edit_salle/" + id,
-                    success: function(salle) {
-                        $('#nom').val(salle.salle_number);
+                    url: "/editDiver/update/" + id,
+                    success: function(diver) {
+                        $('#type').val(diver.type);
+                        $('#montant').val(diver.montant);
+                        $('#date').val(diver.date);
                     }
                 })
             });

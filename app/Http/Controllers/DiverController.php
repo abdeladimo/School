@@ -22,4 +22,16 @@ class DiverController extends Controller
         $diver->save();
         return redirect('/Diver');
     }
+
+    public function edit($id){
+        $diver = Diver::find($id);
+        return $diver;
+    }
+
+    public function update(Request $request,$id)
+    {
+        $diver = Diver::find($id);
+        $diver->update($request->all());
+        return redirect()->route('Divers');
+    }
 }
