@@ -43,6 +43,7 @@ class FamilyController extends Controller
             if($role->users()->save($user)){
                 // store family
                 $family = new family();
+                $family->secondNumber = $request->secondNumber;
                 $user->family()->save($family);
                 return redirect('/allFamily');
 
@@ -56,12 +57,20 @@ class FamilyController extends Controller
         $user = User::find($id);
         $to = route('updatefamily', ['id' => $id]);
         $title = 'Modifier parent';
-        return view('parent.addparent', compact('user','to', 'title'));
+        $parents = Family::all();
+        foreach ($parents as $parent) {
+            if($parent->user_id == $user->id){
+                $secondNumber = $parent->secondNumber;
+                break;
+            }
+        }
+        return view('parent.addparent', compact('user','to', 'title', 'secondNumber'));
     }
 
     public function update(FamilyRequest $request, $id){
         $user = User::find($id);
-        $user->update($request->all());
+        $family = $user->family;
+        $family->update(['secondNumber' => $request->secondNumber]);
         return redirect()->route('editfamily', $user->id);
     }
 
@@ -75,7 +84,14 @@ class FamilyController extends Controller
     public function profile($id){
         $user = User::find($id);
         $age = Carbon::parse($user->dateNaissance)->age;
-        return view('parent.profileparent',compact('user','age'));
+        $parents = Family::all();
+        foreach ($parents as $parent) {
+            if($parent->user_id == $user->id){
+                $secondNumber = $parent->secondNumber;
+                break;
+            }
+        }
+        return view('parent.profileparent',compact('user','age','secondNumber'));
     }
 
     public function showall(){

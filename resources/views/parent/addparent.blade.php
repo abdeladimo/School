@@ -80,6 +80,12 @@
                                         <input type="text" class="form-control" value="{{(isset($user))? $user->tel : ''}}" name="tel">
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Second Mobile Number</label>
+                                        <input type="text" class="form-control" value="{{(isset($secondNumber))? $secondNumber : ''}}" name="secondNumber">
+                                    </div>
+                                </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">Address</label>
