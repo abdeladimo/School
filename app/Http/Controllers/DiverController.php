@@ -34,4 +34,11 @@ class DiverController extends Controller
         $diver->update($request->all());
         return redirect()->route('Divers');
     }
+
+    public function destroy($id)
+    {
+        $diver = Diver::find($id);
+        $diver->delete();
+        return redirect()->route('Divers');
+    }
 }
