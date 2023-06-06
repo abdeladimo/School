@@ -67,12 +67,13 @@
                              <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">Classe</label>
-                                        <select class="form-control" name="class" id="">
-                                            <option value="">Select Classe ...</option>
+                                        <select class="form-control" name="class" id="classes">
+                                            {{-- <option value="">Select Classe ...</option>
                                             @foreach ($classes as $class)
                                                 <option value="{{ $class->id}}">{{$class->nom}}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
+                                        <label class="form-label" id="sign-nb-max-students"></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -133,4 +134,6 @@
     </div>
 </div>
 @endsection
-
+@section('scripts')
+    <script src="{{ asset('js/api/student/add-student.js') }}"></script>
+@endsection
