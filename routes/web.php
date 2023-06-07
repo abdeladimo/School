@@ -43,6 +43,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::group(['middleware' => 'auth'], function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Start Prof Controller
@@ -175,3 +176,4 @@ Route::get('/editDiver/update/{id}',[DiverController::class,'edit']);
 Route::put('/Edit_Diver/update/{id}', [DiverController::class, 'update']);
 Route::delete('/deleteDiver/{id}', [DiverController::class, 'destroy'])->name('deletediver');
 //end routes Diver
+});
