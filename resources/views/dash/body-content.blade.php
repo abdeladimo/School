@@ -71,43 +71,16 @@
                         <h4 class="card-title">Liste des professeurs</h4>
                     </div>
                     <div class="card-body">
-                        <div class="media mb-3 align-items-center border-bottom pb-3">
-                            <img class="mr-3 rounded-circle" alt="image" width="50" src="{{asset('admin/images/profile/education/pic1.jpg')}}">
-                            <div class="media-body">
-                                <h5 class="mb-0 text-pale-sky">Theodore Handle <small class="text-muted">( B.Com )</small></h5>
-                                <small class="text-primary mb-0">Available</small>
+                        @foreach ($profs as $prof)
+                            <div class="media mb-3 align-items-center border-bottom pb-3">
+                                <div class="media-body">
+                                    <img src="" alt="">
+                                    <h5 class="mb-0 text-pale-sky">{{$prof->user->nom}} {{$prof->user->prenom}} <small class="text-muted">({{$prof->matiere->nom}})</small></h5>
+                                </div>
                             </div>
-                        </div>
-                        <div class="media mb-3 align-items-center border-bottom pb-3">
-                            <img class="mr-3 rounded-circle" alt="image" width="50" src="{{asset('admin/images/profile/education/pic2.jpg')}}">
-                            <div class="media-body">
-                                <h5 class="mb-0 text-pale-sky">Bess Willis <small class="text-muted">( M.Com )</small></h5>
-                                <small class="text-danger mb-0">Not Available</small>
-                            </div>
-                        </div>
-                        <div class="media mb-3 align-items-center border-bottom pb-3">
-                            <img class="mr-3 rounded-circle" alt="image" width="50" src="{{asset('admin/images/profile/education/pic3.jpg')}}">
-                            <div class="media-body">
-                                <h5 class="mb-0 text-pale-sky">James Jones <small class="text-muted">( M.Tach  )</small></h5>
-                                <small class="text-primary mb-0">Available</small>
-                            </div>
-                        </div>
-                        <div class="media mb-3 align-items-center border-bottom pb-3">
-                            <img class="mr-3 rounded-circle" alt="image" width="50" src="{{asset('admin/images/profile/education/pic4.jpg')}}">
-                            <div class="media-body">
-                                <h5 class="mb-0 text-pale-sky">Smith Watson <small class="text-muted">( B.Tach  )</small></h5>
-                                <small class="text-danger mb-0">Not Available</small>
-                            </div>
-                        </div>
-                        <div class="media mb-2 align-items-center border-bottom pb-3">
-                            <img class="mr-3 rounded-circle" alt="image" width="50" src="{{asset('admin/images/profile/education/pic5.jpg')}}">
-                            <div class="media-body">
-                                <h5 class="mb-0 text-pale-sky">Morese Sharpe <small class="text-muted">( B.A, M.A )</small></h5>
-                                <small class="text-primary mb-0">Available</small>
-                            </div>
-                        </div>
+                        @endforeach
                         <div class="text-center pt-3">
-                            <a href="javascript:void(0);" class="btn btn-primary btn-rounded btn px-5 btn-lg">View All</a>
+                            <a href="{{route('allprof')}}" class="btn btn-primary btn-rounded btn px-5 btn-lg">View All</a>
                         </div>
                     </div>
                 </div>
