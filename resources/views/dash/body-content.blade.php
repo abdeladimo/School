@@ -96,164 +96,29 @@
                             <table class="table verticle-middle table-responsive-md">
                                 <thead>
                                     <tr>
-                                        <th scope="col">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkAll">
-                                                <label class="custom-control-label" for="checkAll"></label>
-                                            </div>
-                                        </th>
-                                        <th scope="col">Student Name</th>
-                                        <th scope="col">Assigned Coach</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Time</th>
+                                        <th scope="col">Nom Complet</th>
+                                        <th scope="col">Classe</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox2">
-                                                <label class="custom-control-label" for="checkbox2"></label>
-                                            </div>
-                                        </td>
-                                        <td>Angelica Ramos</td>
-                                        <td>Ashton Cox</td>
-                                        <td>12 August 2020</td>
-                                        <td>10:15</td>
-                                        <td>
-                                            <div class="dropdown custom-dropdown mb-0">
-                                                <div data-toggle="dropdown">
-                                                    <i class="fa fa-ellipsis-v"></i>
+                                    @foreach ($students as $student)
+                                        <tr>
+                                            <td>{{$student->user->prenom}}  {{$student->user->nom}}</td>
+                                            <td>{{$student->classe->nom}}</td>
+                                            <td>
+                                                <div class="dropdown custom-dropdown mb-0">
+                                                    <div data-toggle="dropdown">
+                                                        <i class="fa fa-ellipsis-v"></i>
+                                                    </div>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="{{route('profilestudent',['id' => $student->user->id])}}">Details</a>
+                                                        <a class="dropdown-item" href="{{route('editstudent',['id' => $student->user->id])}}">Edit</a>
+                                                    </div>
                                                 </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Accept</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox3">
-                                                <label class="custom-control-label" for="checkbox3"></label>
-                                            </div>
-                                        </td>
-                                        <td>Bradley Greer</td>
-                                        <td>Brenden Wagner</td>
-                                        <td>11 July 2020</td>
-                                        <td>10:00</td>
-                                        <td>
-                                            <div class="dropdown custom-dropdown mb-0">
-                                                <div data-toggle="dropdown">
-                                                    <i class="fa fa-ellipsis-v"></i>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Accept</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox4">
-                                                <label class="custom-control-label" for="checkbox4"></label>
-                                            </div>
-                                        </td>
-                                        <td>Cedric Kelly</td>
-                                        <td>Brielle Williamson</td>
-                                        <td>10 May 2020</td>
-                                        <td>09:45</td>
-                                        <td>
-                                            <div class="dropdown custom-dropdown mb-0">
-                                                <div data-toggle="dropdown">
-                                                    <i class="fa fa-ellipsis-v"></i>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Accept</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox5">
-                                                <label class="custom-control-label" for="checkbox5"></label>
-                                            </div>
-                                        </td>
-                                        <td>Caesar Vance</td>
-                                        <td>Herrod Chandler</td>
-                                        <td>09 April 2020</td>
-                                        <td>09:30</td>
-                                        <td>
-                                            <div class="dropdown custom-dropdown mb-0">
-                                                <div data-toggle="dropdown">
-                                                    <i class="fa fa-ellipsis-v"></i>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Accept</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox6">
-                                                <label class="custom-control-label" for="checkbox6"></label>
-                                            </div>
-                                        </td>
-                                        <td>Rhona Davidson</td>
-                                        <td>Sonya Frost</td>
-                                        <td>08 March 2020</td>
-                                        <td>09:15</td>
-                                        <td>
-                                            <div class="dropdown custom-dropdown mb-0">
-                                                <div data-toggle="dropdown">
-                                                    <i class="fa fa-ellipsis-v"></i>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Accept</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox7">
-                                                <label class="custom-control-label" for="checkbox7"></label>
-                                            </div>
-                                        </td>
-                                        <td>Bradley Greer</td>
-                                        <td>Brenden Wagner</td>
-                                        <td>11 July 2020</td>
-                                        <td>10:00</td>
-                                        <td>
-                                            <div class="dropdown custom-dropdown mb-0">
-                                                <div data-toggle="dropdown">
-                                                    <i class="fa fa-ellipsis-v"></i>
-                                                </div>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="javascript:void(0);">Accept</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Details</a>
-                                                    <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
