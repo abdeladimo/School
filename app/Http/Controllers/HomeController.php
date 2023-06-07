@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Prof;
+use App\Models\Student;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $profs = Prof::all()->take(4);
-        return view('dash.main',compact('profs'));
+        $students = Student::all()->take(6);
+        return view('dash.main',compact('profs','students'));
     }
 }
