@@ -62,3 +62,32 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Explain
+
+This README is to explain how Paypal and Stripe work.
+
+## To Use Paypal
+
+To integrate Paypal into your project, you can use the `srmklive/paypal "~1.0"` package.
+This package offers a set of handy tools and features for interacting with the Paypal API.
+
+To install the `srmklive/paypal "~1.0"` package, you can use Composer: `composer require srmklive/paypal "~1.0"`
+
+And in a file you have to increase:
+PAYPAL_MODE=
+PAYPAL_SANDBOX_API_USERNAME=
+PAYPAL_SANDBOX_API_PASSWORD=
+PAYPAL_SANDBOX_API_SECRET=
+PAYPAL_CURRENCY=
+PAYPAL_SANDBOX_API_CERTIFICATE=
+
+## To Use Stripe
+
+To integrate Stripe into your project, you can use the `stripe/stripe-php` package. This package offers a complete set of tools and features to interact with the Stripe payment gateway.
+
+To install the `stripe/stripe-php` package, you can use Composer: `composer require stripe/stripe-php`
+
+And in a file you have to increase:
+STRIPE_KEY=
+STRIPE_SECRET=
