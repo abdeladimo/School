@@ -14,7 +14,7 @@
                                     @foreach ($errors->all() as $error)
                                         {{ $error }}
                                     @endforeach
-                        
+
                                     <form action="{{route('register')}}" method="POST">
                                         @csrf
                                         <div class="form-group">
@@ -23,7 +23,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Email</strong></label>
-                                            <input type="email" class="form-control" name="email" value="{{old('email')}}">
+                                            <input type="text" class="form-control" name="email" value="{{old('email')}}">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Password</strong></label>
