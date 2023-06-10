@@ -65,7 +65,7 @@
                                                                 <i class="la la-eye">
                                                                 </i>
                                                             </a>
-                                                            <a href="{{route('editadmin',['id' => $admin->user->id])}}" class="btn btn-sm btn-success">
+                                                            <a href="{{route('editadmin',['admin' => $admin->id])}}" class="btn btn-sm btn-success">
                                                                 <i class="la la-pencil">
                                                                 </i>
                                                             </a>
@@ -99,7 +99,7 @@
                                                     <div class="dropdown-menu dropdown-menu-right border py-0">
                                                         <div class="py-2 btn_crud_admin_grid_view">
                                                             <a href="{{route('createadmin')}}" class="btn btn-sm btn-primary"><i class="la la-plus"></i></a>
-                                                            <a href="{{route('editadmin',['id' => $admin->user->id])}}" class="btn btn-sm btn-success">
+                                                            <a href="{{route('editadmin',['admin' => $admin->id])}}" class="btn btn-sm btn-success">
                                                                 <i class="la la-pencil">
                                                                 </i>
                                                             </a>

@@ -104,6 +104,7 @@
                                                     <div class="col-lg-9 col-md-8 col-sm-6 col-6"><span>{{($user->cin)? $user->cin : ''}}</span>
                                                     </div>
                                                 </div>
+                                                <x-employee-infos-profile-format :salaire="($user->admin)? ($user->admin->employee ? $user->admin->employee->salaire : '') : ''" :date-embauche="($user->admin)? ($user->admin->employee ? $user->admin->employee->date_embauche : '') : ''" />
                                             </div>
                                         </div>
                                     </div>

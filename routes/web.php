@@ -48,10 +48,10 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Start Prof Controller
 Route::get('/addProf',[ProfController::class,'create'])->name('createprof');
-Route::put('/editprof/update/{id}', [ProfController::class, 'update'])->name('updateprof');
+Route::put('/editprof/update/{prof}', [ProfController::class, 'update'])->name('updateprof');
 Route::get('/allProf',[ProfController::class,'showall'])->name('allprof');
 Route::post('/storeProf',[ProfController::class,'store'])->name('storeprof');
-Route::get('/editprof/{id}',[ProfController::class,'edit'])->name('editprof');
+Route::get('/editprof/{prof}',[ProfController::class,'edit'])->name('editprof');
 Route::delete('/deleteprof/{id}', [ProfController::class, 'destroy'])->name('deleteprof');
 Route::get('/profileprof/{id}',[ProfController::class,'profile'])->name('profileprof');
 // End Prof Controller
@@ -60,17 +60,17 @@ Route::get('/addSurveillantGeneral',[ServeillantGeneralController::class, 'creat
 Route::post('/storeSurveillantGeneral',[ServeillantGeneralController::class,'store'])->name('storeSG');
 Route::get('/allSurveillantGeneral',[ServeillantGeneralController::class,'showall'])->name('allSG');
 Route::delete('/deleteSurveillantGeneral/{id}', [ServeillantGeneralController::class, 'destroy'])->name('deleteSG');
-Route::get('/editSurveillantGeneral/{id}',[ServeillantGeneralController::class,'edit'])->name('editSG');
-Route::put('/editSurveillantGeneral/update/{id}', [ServeillantGeneralController::class, 'update'])->name('updateSG');
+Route::get('/editSurveillantGeneral/{surveillant_generale}',[ServeillantGeneralController::class,'edit'])->name('editSG');
+Route::put('/editSurveillantGeneral/update/{surveillant_generale}', [ServeillantGeneralController::class, 'update'])->name('updateSG');
 Route::get('/profileSurveillantGeneral/{id}',[ServeillantGeneralController::class,'profile'])->name('profileSG');
 //End Surveillant General controller
 
 //start CRUD admin
 Route::get('/add_admin',[AdController::class,'index'])->name('createadmin');
-Route::put('/editadmin/update/{id}', [AdController::class, 'update'])->name('updateadmin');
+Route::put('/editadmin/update/{admin}', [AdController::class, 'update'])->name('updateadmin');
 Route::get('/allAdmin',[AdController::class,'show'])->name('alladmin');
 Route::post('/storeAdmin',[AdController::class,'store'])->name('storeadmin');
-Route::get('/editadmin/{id}',[AdController::class,'edit'])->name('editadmin');
+Route::get('/editadmin/{admin}',[AdController::class,'edit'])->name('editadmin');
 Route::delete('/deleteadmin/{id}', [AdController::class, 'destroy'])->name('deleteadmin');
 Route::get('/profileadmin/{id}',[AdController::class,'profile'])->name('profileadmin');
 //end CRUD admin

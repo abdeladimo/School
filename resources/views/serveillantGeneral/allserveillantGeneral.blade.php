@@ -69,7 +69,7 @@
                                                                     <i class="la la-eye">
                                                                     </i>
                                                                 </a>
-                                                                <a href="{{route('editSG',['id' => $S->user->id])}}" class="btn btn-sm btn-primary">
+                                                                <a href="{{route('editSG',['surveillant_generale' => $S->id])}}" class="btn btn-sm btn-primary">
                                                                     <i class="la la-pencil">
                                                                     </i>
                                                                 </a>
@@ -108,7 +108,7 @@
                                                         <div class="dropdown-menu dropdown-menu-right border py-0">
                                                             <div class="py-2">
                                                                 <a class="dropdown-item"
-                                                                    href="{{route('editSG',['id' => $S->user->id])}}">Edit</a>
+                                                                    href="{{route('editSG',['surveillant_generale' => $S->id])}}">Edit</a>
                                                                 <form method="POST"
                                                                     action="#"
                                                                     id="delete_form{{ $loop->iteration }}" class="d-none">

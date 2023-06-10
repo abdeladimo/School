@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Admin;
+use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -67,6 +68,12 @@ class AdController extends Controller
                 $admin = new Admin();
                 $admin->user_id = $request->user_id;
                 $user->admin()->save($admin);
+                $employee = new Employee;
+                $employee->salaire = $request->salaire;
+                $employee->date_embauche = $request->date_embauche;
+                if ($employee->save()) {
+                    $employee->admin()->save($admin);
+                }
                 return redirect('/allAdmin');
               }
           }
@@ -91,14 +98,14 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Admin $admin)
     {
         //
-        $user = User::find($id);
+        $user = User::find($admin->user->id);
         $roles = Role::all();
-        $to = route('updateadmin', ['id' => $id]);
+        $to = route('updateadmin', ['admin' => $admin->id]);
         $title = 'Modifier Admin';
-        return view('Admin.add_admin', compact('user','roles', 'to', 'title'));
+        return view('Admin.add_admin', compact('user','roles', 'to', 'title', 'admin'));
     }
 
     /**
@@ -108,12 +115,12 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Admin $admin, Request $request)
     {
         //
-        $user = User::find($id);
-        $user->update($request->all());
-        return redirect()->route('alladmin', $user->id);
+        $admin->user->update($request->all());
+        $admin->employee->update($request->all());
+        return redirect()->route('alladmin');
     }
 
     /**
