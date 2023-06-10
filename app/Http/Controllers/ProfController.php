@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Prof;
+use App\Models\matiere;
 use App\Http\Requests\ProfRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,8 @@ class ProfController extends Controller
     public function create(){
         $to = route('storeprof');
         $title = 'Ajouter professeur';
-        return view('prof.addprof',compact('to','title'));
+        $matieres = Matiere::all();
+        return view('prof.addprof',compact('to','title','matieres'));
     }
 
     public function store(ProfRequest $request){
@@ -41,6 +43,7 @@ class ProfController extends Controller
             if($role->users()->save($user)){
                 // store prof
                 $prof = new prof();
+                $prof->matiere_id = $request->matiere_id;
                 $user->prof()->save($prof);
                 return redirect()->route('allprof');
             }
