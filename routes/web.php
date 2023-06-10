@@ -21,6 +21,7 @@ use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PaypalPaymentController;
 use App\Http\Controllers\DiverController;
+use App\Http\Controllers\InscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 // Start Prof Controller
 Route::get('/addProf',[ProfController::class,'create'])->name('createprof');
 Route::put('/editprof/update/{id}', [ProfController::class, 'update'])->name('updateprof');
@@ -176,4 +176,11 @@ Route::get('/editDiver/update/{id}',[DiverController::class,'edit']);
 Route::put('/Edit_Diver/update/{id}', [DiverController::class, 'update']);
 Route::delete('/deleteDiver/{id}', [DiverController::class, 'destroy'])->name('deletediver');
 //end routes Diver
+//Start inscription controller
+Route::get('/allInscription',[InscriptionController::class,'showall'])->name('allinscription');
+Route::post('/storeinscription',[InscriptionController::class,'store'])->name('storeinscription');
+Route::put('/editInscription/update/{id}', [InscriptionController::class, 'update'])->name('updateinscription');
+Route::delete('/deleteInscription/{id}', [InscriptionController::class, 'destroy'])->name('deleteinscription');
+Route::get('/edit_inscription/{id}',[InscriptionController::class,'edit']);
+//End inscription controller
 });
