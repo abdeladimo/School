@@ -3,7 +3,7 @@
     <div class="content-body">
         <!-- row -->
         <div class="container-fluid">
-                
+
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
@@ -18,7 +18,7 @@
                     </ol>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-xl-12 col-xxl-12 col-sm-12">
                     <div class="card">
@@ -87,6 +87,17 @@
                                         <div class="form-group">
                                             <label class="form-label">Date de Naissance</label>
                                             <input type="date" class="datepicker-default form-control" value="{{(isset($user))? $user->dateNaissance : ''}}" id="datepicker1" name="dateNaissance">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Matiere</label>
+                                            <select class="form-control" name="matiere_id">
+                                                <option selected hidden>Matiere</option>
+                                                @foreach ($matieres as $matiere)
+                                                    <option value="{{$matiere->id}}">{{$matiere->nom}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
