@@ -60,7 +60,7 @@
                                                                 <i class="la la-eye">
                                                                 </i>
                                                             </a>
-                                                            <a href="{{route('editprof',['id' => $prof->user->id])}}" class="btn btn-sm btn-primary">
+                                                            <a href="{{route('editprof',['prof' => $prof->id])}}" class="btn btn-sm btn-primary">
                                                                 <i class="la la-pencil">
                                                                 </i>
                                                             </a>
@@ -93,7 +93,7 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-right border py-0">
                                                         <div class="py-2">
-                                                            <a class="dropdown-item" href="{{route('editprof',['id' => $prof->user->id])}}">Edit</a>
+                                                            <a class="dropdown-item" href="{{route('editprof',['prof' => $prof->user->id])}}">Edit</a>
                                                             <form method="POST" action="{{ route('deleteprof', ['id' => $prof->user->id]) }}" id="delete_form{{$loop->iteration}}" class="d-none">
                                                                 @csrf
                                                                 @method('DELETE')

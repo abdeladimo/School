@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Prof;
 use App\Models\matiere;
 use App\Http\Requests\ProfRequest;
+use App\Models\Employee;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
@@ -45,6 +46,12 @@ class ProfController extends Controller
                 $prof = new prof();
                 $prof->matiere_id = $request->matiere_id;
                 $user->prof()->save($prof);
+                $employee = new Employee;
+                $employee->salaire = $request->salaire;
+                $employee->date_embauche = $request->date_embauche;
+                if ($employee->save()) {
+                    $employee->prof()->save($prof);
+                }
                 return redirect()->route('allprof');
             }
         }
@@ -55,16 +62,16 @@ class ProfController extends Controller
         return view('prof.allprof',compact('profs'));
     }
 
-    public function edit($id){
-        $user = User::find($id);
-        $to = route('updateprof', ['id' => $id]);
+    public function edit(Prof $prof){
+        $user = $prof->user;
+        $to = route('updateprof', ['prof' => $prof->id]);
         $title = 'Modifier professeur';
-        return view('prof.addprof', compact('user', 'to', 'title'));
+        return view('prof.addprof', compact('user', 'to', 'title', 'prof'));
     }
 
-    public function update(ProfRequest $request, $id){
-        $user = User::find($id);
-        $user->update($request->all());
+    public function update(Prof $prof, ProfRequest $request){
+        $prof->user->update($request->all());
+        $prof->employee->update($request->all());
         return redirect()->route('allprof');
     }
 
