@@ -130,6 +130,7 @@
                                                     <div class="col-lg-9 col-md-8 col-sm-6 col-6"><span>{{($user->cin)? $user->cin : ''}}</span>
                                                     </div>
                                                 </div>
+                                                <x-employee-infos-profile-format :salaire="($user->SG)? ($user->SG->employee ? $user->SG->employee->salaire : '') : ''" :date-embauche="($user->SG)? ($user->SG->employee ? $user->SG->employee->date_embauche : '') : ''" />
                                             </div>
                                         </div>
                                     </div>

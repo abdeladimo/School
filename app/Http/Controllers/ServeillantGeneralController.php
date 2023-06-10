@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Role;
 use App\Http\Requests\SGRequest;
+use App\Models\Employee;
 use Illuminate\Support\Carbon;
 
 class ServeillantGeneralController extends Controller
@@ -42,6 +43,12 @@ class ServeillantGeneralController extends Controller
                 // store prof
                 $SG = new Surveillant_Generale();
                 $user->SG()->save($SG);
+                $employee = new Employee;
+                $employee->salaire = $request->salaire;
+                $employee->date_embauche = $request->date_embauche;
+                if ($employee->save()) {
+                    $employee->surveillant_generale()->save($SG);
+                }
                 return redirect('/allSurveillantGeneral');
             }
         }
@@ -52,16 +59,16 @@ class ServeillantGeneralController extends Controller
         return view('serveillantGeneral.allserveillantGeneral',compact('SG'));
     }
 
-    public function edit($id){
-        $user = User::find($id);
-        $to = route('updateSG', ['id' => $id]);
+    public function edit(Surveillant_Generale $surveillant_generale){
+        $user = $surveillant_generale->user;
+        $to = route('updateSG', ['surveillant_generale' => $surveillant_generale->id]);
         $title = 'Modifier SG';
-        return view('serveillantGeneral.add_edit_serveillantGeneral', compact('user', 'to', 'title'));
+        return view('serveillantGeneral.add_edit_serveillantGeneral', compact('user', 'to', 'title', 'surveillant_generale'));
     }
 
-    public function update(SGRequest $request, $id){
-        $user = User::find($id);
-        $user->update($request->all());
+    public function update(Surveillant_Generale $surveillant_generale, SGRequest $request){
+        $surveillant_generale->user->update($request->all());
+        $surveillant_generale->employee->update($request->all());
         return redirect()->route('allSG');
     }
 
