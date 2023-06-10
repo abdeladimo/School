@@ -100,6 +100,7 @@
                                             <input type="file" class="dropify" data-default-file="" name="image">
                                         </div>
                                     </div>
+                                    <x-employee-infos :employee="(isset($admin)) ? $admin->employee : new App\Models\Employee" />
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         <button type="submit" class="btn btn-light">Cancel</button>
