@@ -21,6 +21,7 @@ use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PaypalPaymentController;
 use App\Http\Controllers\DiverController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\InscriptionController;
 
 /*
@@ -183,4 +184,8 @@ Route::put('/editInscription/update/{id}', [InscriptionController::class, 'updat
 Route::delete('/deleteInscription/{id}', [InscriptionController::class, 'destroy'])->name('deleteinscription');
 Route::get('/edit_inscription/{id}',[InscriptionController::class,'edit']);
 //End inscription controller
+//Start driver routes
+Route::view('driver', 'driver.driver');
+Route::resource('drivers', DriverController::class);
+//End driver routes
 });

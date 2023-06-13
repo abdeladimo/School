@@ -27,4 +27,8 @@ class Employee extends Model
     public function admin(){
         return $this->hasOne(Admin::class);
     }
+    
+    public function driver(){
+        return $this->hasOne(Driver::class);
+    }
 }
