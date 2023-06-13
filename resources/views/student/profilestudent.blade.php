@@ -28,11 +28,7 @@
                                     <div class="profile-photo">
                                         <img src="{{asset('storage/'.$user->image)}}" width="100" class="img-fluid rounded-circle" alt="">
                                     </div>
-                                    <h3 class="mt-3 mb-1 text-white">Deangelo Sena</h3>
-                                    <p class="text-white mb-0">Senior Manager</p>
-                                </div>
-                                <div class="card-footer text-center border-0 mt-0">
-                                    <a href="javascript:void(0);" class="btn btn-warning btn-rounded px-4">Message</a>
+                                    <h3 class="mt-3 mb-1 text-white">{{$user->nom}} {{$user->prenom}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -43,17 +39,13 @@
                                 </div>
                                 <div class="card-footer pt-0 pb-0 text-center">
                                     <div class="row">
-                                        <div class="col-4 pt-3 pb-3 border-right">
-                                            <h3 class="mb-1 text-primary">150</h3>
+                                        <div>
+                                            <h3 class="mb-1 text-primary">{{$user->student->classe->niveau->nom}}</h3>
                                             <span>Level</span>
                                         </div>
-                                        <div class="col-4 pt-3 pb-3 border-right">
-                                            <h3 class="mb-1 text-primary">140</h3>
-                                            <span>Parents</span>
-                                        </div>
-                                        <div class="col-4 pt-3 pb-3">
-                                            <h3 class="mb-1 text-primary">45</h3>
-                                            <span>Classes</span>
+                                        <div>
+                                            <h3 class="mb-1 text-primary">{{$user->student->classe->nom}}</h3>
+                                            <span>Classe</span>
                                         </div>
                                     </div>
                                 </div>
