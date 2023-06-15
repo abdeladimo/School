@@ -104,6 +104,14 @@
                 <li><a href="{{ route('allinscription') }}">All Inscriptions</a></li>
             </ul>
         </li>
+        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="la la-users"></i>
+                <span class="nav-text">Events</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ route('allevent') }}">All Events</a></li>
+            </ul>
+        </li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="la la-gift"></i>
                     <span class="nav-text">Holiday</span>

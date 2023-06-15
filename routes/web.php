@@ -22,6 +22,7 @@ use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\PaypalPaymentController;
 use App\Http\Controllers\DiverController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\InscriptionController;
 
 /*
@@ -188,4 +189,11 @@ Route::get('/edit_inscription/{id}',[InscriptionController::class,'edit']);
 Route::view('driver', 'driver.driver');
 Route::resource('drivers', DriverController::class);
 //End driver routes
+//Start Event controller
+Route::get('/allEvent',[EventController::class,'showall'])->name('allevent');
+Route::post('/storeevent',[EventController::class,'store'])->name('storeevent');
+Route::put('/editEvent/update/{id}', [EventController::class, 'update'])->name('updateevent');
+Route::delete('/deleteEvent/{id}', [EventController::class, 'destroy'])->name('deleteevent');
+Route::get('/edit_event/{id}',[EventController::class,'edit']);
+//End event controller
 });
